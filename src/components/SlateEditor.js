@@ -9,6 +9,9 @@ import Toolbar from './ToolBar/Toolbar';
 import { MarkButton, toggleMark } from './ToolBar/MarkButton';
 import { BlockButton } from './ToolBar/BlockButton';
 import Elements from './Common/Elements';
+
+import { withImages, InsertImageButton } from './Image/InsertImageButton';
+
 import '../styles/editor.css';
 
 // for all rich editor hot keys
@@ -32,7 +35,10 @@ const SlateEditor = () => {
 	const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
 	// the slate editor object
-	const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+	const editor = useMemo(
+		() => withImages(withHistory(withReact(createEditor()))),
+		[]
+	);
 
 	return (
 		<div className='editor-container'>
@@ -100,6 +106,7 @@ const SlateEditor = () => {
 						icon='format_align_justify'
 						title='justify'
 					/>
+					<InsertImageButton title='image' />
 				</Toolbar>
 				{/* the slate editor */}
 				<Editable
