@@ -1,0 +1,13 @@
+.editor-container {
+    width: 80vw;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.rich-editor {
+    width: 90%;
+}
+
+.tags {
+    width: 10%;
+}
