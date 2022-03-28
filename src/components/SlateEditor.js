@@ -1,15 +1,16 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import isHotkey from 'is-hotkey';
 import { Editable, withReact, Slate } from 'slate-react';
-import { withHistory } from 'slate-history';
 import { isKeyHotkey } from 'is-hotkey';
 import { Transforms, createEditor, Range } from 'slate';
+import { withHistory } from 'slate-history';
 
-import Leaf from './Common/Leaf';
+// import Leaf from './Common/Leaf';
 import Toolbar from './ToolBar/Toolbar';
 import { MarkButton, toggleMark } from './ToolBar/MarkButton';
 import { BlockButton } from './ToolBar/BlockButton';
 import Elements from './Common/Elements';
+import Leaf from './Common/Leaf';
 
 import { withImages, InsertImageButton } from './Image/InsertImageButton';
 import { withLinks } from './Link/linkUtilFunctions';
@@ -113,6 +114,11 @@ const SlateEditor = () => {
 					<InsertImageButton title='image' />
 					<AddLinkButton title='add link' />
 					<RemoveLinkButton title='remove link' />
+					<MarkButton
+						format='highlight'
+						icon='format_color_fill'
+						title='highlight'
+					/>
 				</Toolbar>
 				{/* the slate editor */}
 				<Editable
@@ -157,6 +163,7 @@ const SlateEditor = () => {
 					}}
 				/>
 			</Slate>
+			<div className='tags'></div>
 		</div>
 	);
 };
