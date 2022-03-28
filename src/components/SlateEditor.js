@@ -18,6 +18,7 @@ import AddLinkButton from './Link/AddLinkButton';
 import RemoveLinkButton from './Link/RemoveLinkButton';
 
 import '../styles/editor.css';
+import TagContainer from './Highlight/TagContainer';
 
 // for all rich editor hot keys
 const HOTKEYS = {
@@ -163,7 +164,7 @@ const SlateEditor = () => {
 					}}
 				/>
 			</Slate>
-			<div className='tags'></div>
+			<TagContainer />
 		</div>
 	);
 };
