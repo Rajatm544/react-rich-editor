@@ -10,4 +10,13 @@
 
 .tags {
     width: 10%;
+
+}
+
+.tag {
+    border-radius: 2px;
+    opacity: 0.9;
+    color: white;
+    font-size: 0.9em;
+    padding: 0.1em;
 }
