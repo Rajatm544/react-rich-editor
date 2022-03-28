@@ -1,8 +1,9 @@
 import React from 'react';
-import Menu from './Menu';
+import Menu from '../Common/Menu';
 import '../../styles/toolbar.css';
 import { cx, css } from '@emotion/css';
 
+// toolbar menu with custom styling
 const Toolbar = React.forwardRef(({ className, ...props }, ref) => (
 	<Menu
 		{...props}
