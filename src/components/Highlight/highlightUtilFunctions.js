@@ -42,7 +42,7 @@ export const colorTags = () => {
 
 // place the highlight tags in the DOM
 export const placeDiv = (y_pos, text) => {
-	const tagsContainer = document.getElementsByClassName('tags')[0];
+	const tagsContainer = document.querySelector('.tags');
 	const tags = Array.from(document.querySelectorAll('.tag'));
 
 	// craete a new Tag span with the correct y position to align it to the highlighted line
@@ -51,7 +51,7 @@ export const placeDiv = (y_pos, text) => {
 		{
 			style: {
 				position: 'absolute',
-				left: `${tagsContainer.getBoundingClientRect().left + 5}px`,
+				left: `${tagsContainer.getBoundingClientRect().left}px`,
 				top: `${y_pos}px`,
 				background: `${assignedColors[y_pos]}`,
 			},
@@ -88,5 +88,5 @@ export const placeDiv = (y_pos, text) => {
 	}
 
 	allTags.push(newTag);
-	ReactDOM.hydrate(allTags, tagsContainer); //render the tags in the parent container
+	ReactDOM.render(allTags, tagsContainer, null); //render the tags in the parent container
 };
