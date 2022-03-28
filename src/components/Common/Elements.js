@@ -1,4 +1,5 @@
 import Image from '../Image/Image';
+import { LinkComponent } from '../Link/LinkComponent';
 
 // function to handle all toolbar elements and to return the correct html element for rich editor
 const Elements = ({ attributes, children, element }) => {
@@ -47,6 +48,8 @@ const Elements = ({ attributes, children, element }) => {
 				);
 			case 'image':
 				return <Image {...props} />;
+			case 'link':
+				return <LinkComponent {...props} />;
 
 			default:
 				return (
