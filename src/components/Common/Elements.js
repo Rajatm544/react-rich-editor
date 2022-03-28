@@ -1,5 +1,8 @@
+import Image from '../Image/Image';
+
 // function to handle all toolbar elements and to return the correct html element for rich editor
 const Elements = ({ attributes, children, element }) => {
+	const props = { attributes, children, element };
 	if (element) {
 		const style = { textAlign: element.align };
 		switch (element.type) {
@@ -42,6 +45,8 @@ const Elements = ({ attributes, children, element }) => {
 						{children}
 					</ol>
 				);
+			case 'image':
+				return <Image {...props} />;
 
 			default:
 				return (
