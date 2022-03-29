@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-	allColors,
-	assignedColors,
-	colorTags,
-	placeDiv,
-} from './highlightUtilFunctions';
+import { allColors, assignedColors, placeDiv } from './highlightUtilFunctions';
 
 const Tag = ({ children, coords }) => {
 	const [yPos, setYPos] = useState(0);
@@ -14,7 +9,6 @@ const Tag = ({ children, coords }) => {
 			if (!assignedColors[yPos]) {
 				assignedColors[yPos] = allColors.pop();
 			}
-			colorTags();
 		}
 	}, [coords, yPos]);
 
