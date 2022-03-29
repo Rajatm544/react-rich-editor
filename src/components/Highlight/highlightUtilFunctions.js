@@ -23,18 +23,21 @@ export const getSelectionCoords = () => {
 	const oRange = sele.getRangeAt(0);
 	const oRect = oRange.getBoundingClientRect();
 	return {
-		x: oRect.x,
-		y: oRect.y,
+		x: Math.floor(oRect.x),
+		y: Math.floor(oRect.y),
 	};
 };
 
-// color the tags
+// color the highlighted text
 export const colorTags = () => {
+	// fetch all spans which were highlighted
 	const highlightTags = Array.from(
 		document.querySelectorAll('.tag-highlight')
 	);
+
+	// since the text lies at the same y offset as the corresponding tag, use these values to assign bg color
 	highlightTags.map((tag) => {
-		const index = tag.className.split(' ')[1];
+		const index = Math.floor(tag.getBoundingClientRect().y);
 		tag.style.background = assignedColors[index];
 		return null;
 	});
@@ -78,7 +81,7 @@ export const placeDiv = (y_pos, text) => {
 						top: `${tags[i].offsetTop}px`,
 						background: `${assignedColors[newYPos]}`,
 					},
-					className: 'tag',
+					className: tags[i].className,
 					key: i,
 				},
 				`${tags[i].innerText}`
@@ -88,5 +91,8 @@ export const placeDiv = (y_pos, text) => {
 	}
 
 	allTags.push(newTag);
-	ReactDOM.render(allTags, tagsContainer, null); //render the tags in the parent container
+	ReactDOM.render(allTags, tagsContainer); //render the tags in the parent container
+
+	// color the highlighted text after a while
+	colorTags();
 };
