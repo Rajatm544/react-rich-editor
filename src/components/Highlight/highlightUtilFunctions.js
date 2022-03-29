@@ -1,21 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { colors } from './colors.js';
 
 // to assign different colors to the different y-positions
 export const assignedColors = {};
 
 // to color backgrounds of highlighted text
-export const allColors = [
-	'#FF6037',
-	'#ED0A3F',
-	'#E77200',
-	'#33CC99',
-	'#63B76C',
-	'#EE34D2',
-	'#CCFF00',
-	'#0A7E8C',
-	'#FF355E',
-];
+
+export const allColors = shuffle(colors);
+
+function shuffle(array) {
+	let currentIndex = array.length,
+		randomIndex;
+
+	// While there remain elements to shuffle...
+	while (currentIndex !== 0) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		// And swap it with the current element.
+		[array[currentIndex], array[randomIndex]] = [
+			array[randomIndex],
+			array[currentIndex],
+		];
+	}
+
+	return array;
+}
 
 // get the x and y coordinates of selected text
 export const getSelectionCoords = () => {
