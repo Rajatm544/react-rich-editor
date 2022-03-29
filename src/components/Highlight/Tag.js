@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { allColors, assignedColors, placeDiv } from './highlightUtilFunctions';
+import '../../styles/editor.css';
 
 const Tag = ({ children, coords }) => {
 	const [yPos, setYPos] = useState(0);
@@ -19,7 +20,9 @@ const Tag = ({ children, coords }) => {
 	}, [yPos]);
 	return (
 		<span
-			style={{ background: allColors[yPos] }}
+			style={{
+				background: allColors[yPos],
+			}}
 			className={`tag-highlight ${yPos > 0 ? yPos : ''}`}>
 			{children}
 		</span>
